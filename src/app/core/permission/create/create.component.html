@@ -1,0 +1,26 @@
+<div class="wrapper">
+    <mat-card class="create-form">
+        <mat-card-title> Create Permission </mat-card-title>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Permission Name </mat-label>
+                <input matInput placeholder="Enter permission name" [(ngModel)]="name" />
+            </mat-form-field>
+
+            <div class="checkbox-wrapper">
+                <mat-label> Choose Permission </mat-label>
+                <div class="checkbox-control">
+                    <mat-checkbox class="ml" [(ngModel)]="read"> Read </mat-checkbox>
+                    <mat-checkbox class="ml" [(ngModel)]="write"> Write </mat-checkbox>
+                    <mat-checkbox class="ml" [(ngModel)]="edit"> Edit </mat-checkbox>
+                <mat-checkbox class="ml" [(ngModel)]="del"> Delete </mat-checkbox>
+                </div>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" [disabled]="isLoading" (click)="create()"> Create </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

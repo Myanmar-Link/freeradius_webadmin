@@ -1,0 +1,48 @@
+.header-toolbar {
+    min-width: 240px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+}
+
+.header-title {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10px;
+}
+
+.header-label {
+    margin-left: 10px;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type,
+.mat-accordion .mat-expansion-panel:first-of-type {
+    border-radius: 0px;
+}
+
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+    align-items: center;
+}
+
+.menu-btn {
+    width: 100%;
+    text-align: justify;
+}
+
+.side-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
