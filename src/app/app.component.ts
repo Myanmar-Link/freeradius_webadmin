@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { sideMenu } from './constants/navigation';
 import { CHILDREN_MENU, MENU } from './models/menu.model'
 import { PERMISSION } from './models/permission.model';
@@ -28,14 +27,11 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private utilitiesService: UtilitiesService,
-    private store: Store<any>,
     private route: Router
   ) { }
 
   link(page: any) {
-    return this.route.navigateByUrl(page.url, {
-      state: page
-    });
+    return this.route.navigateByUrl(page.url);
   }
 
   ngOnInit(): void {
@@ -63,7 +59,7 @@ export class AppComponent implements OnInit {
 
         this.appMenu.map((value: MENU) => {
           value.children.map((children: CHILDREN_MENU) => {
-            children.permission = JSON.parse(getPermission)
+            children.permission = JSON.parse(getPermission);
           })
         })
       });

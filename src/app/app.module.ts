@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MaterialModule } from './core/material.module';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
-import { EffectsModule } from '@ngrx/effects';
 
 const coreModules: any = [
   DashboardModule
@@ -27,7 +26,6 @@ const coreModules: any = [
     HttpClientModule,
     MaterialModule,
     ...coreModules,
-    EffectsModule.forRoot([])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
