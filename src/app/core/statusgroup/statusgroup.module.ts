@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
   ]
 })
 export class StatusgroupModule { }

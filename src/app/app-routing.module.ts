@@ -44,6 +44,11 @@ const routes: Routes = [
     path: 'statusgroup',
     loadChildren: () => import('./core/statusgroup/statusgroup.module').then(m => m.StatusgroupModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'company',
+    loadChildren: () => import('./core/company/company.module').then(m => m.CompanyModule),
+    canActivate: [AuthGuard]
   }
 ];
 

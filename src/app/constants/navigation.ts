@@ -46,7 +46,7 @@ export const sideMenu: MENU[] = [
     },
     {
       title: 'Status Group',
-      icon: '',
+      icon: 'wysiwyg',
       children: [
         {
           title: 'Create',
@@ -55,6 +55,20 @@ export const sideMenu: MENU[] = [
         {
           title: 'Status Group List',
           url: '/statusgroup/statusgroupList'
+        }
+      ]
+    },
+    {
+      title: 'Company',
+      icon: 'business',
+      children: [
+        {
+          title: 'Create',
+          url: '/company/create'
+        },
+        {
+          title: 'Company List',
+          url: '/company/companyList'
         }
       ]
     }

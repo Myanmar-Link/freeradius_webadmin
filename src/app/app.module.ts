@@ -11,7 +11,6 @@ import { MaterialModule } from './core/material.module';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { DepartmentModule } from './core/department/department.module';
 
-
 const coreModules: any = [
   DashboardModule
 ];

@@ -1,0 +1,51 @@
+<div class="wrapper">
+    <mat-card class="create-form">
+        <mat-card-title> Create Company </mat-card-title>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Company Name </mat-label>
+                <input matInput placeholder="Enter Company name" [(ngModel)] = "companyName"/>
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Contact Person </mat-label>
+                <input matInput placeholder="Enter Contact Person Name" [(ngModel)] = "contactPerson" />
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Company Type </mat-label>
+                <input matInput placeholder="Enter Company Type" [(ngModel)] = "companyType" />
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Email Address </mat-label>
+                <input matInput placeholder="Enter Email Address" [(ngModel)] = "email" />
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Phone Number </mat-label>
+                <input matInput type="number" placeholder="Enter Phone Number" [(ngModel)] = "phNo" />
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Address ID </mat-label>
+                <input matInput placeholder="Enter Address ID" [(ngModel)] = "addressId" />
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="createCompany()"> Create </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
