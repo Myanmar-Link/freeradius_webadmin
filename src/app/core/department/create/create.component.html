@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <mat-card class="create-form">
+        <mat-card-title> Create Department </mat-card-title>
+
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> Department Name </mat-label>
+                <input matInput placeholder="Enter Department name" [(ngModel)]="deptName"/>
+            </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="createDept()"> Create </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

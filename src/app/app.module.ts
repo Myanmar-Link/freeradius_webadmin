@@ -9,6 +9,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MaterialModule } from './core/material.module';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { DepartmentModule } from './core/department/department.module';
+
 
 const coreModules: any = [
   DashboardModule
@@ -25,6 +27,7 @@ const coreModules: any = [
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    DepartmentModule,
     ...coreModules,
   ],
   providers: [

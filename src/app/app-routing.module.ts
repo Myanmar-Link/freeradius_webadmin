@@ -29,6 +29,21 @@ const routes: Routes = [
     path: 'permission',
     loadChildren: () => import('./core/permission/permission.module').then(m => m.PermissionModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'department',
+    loadChildren: () => import('./core/department/department.module').then(m => m.DepartmentModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'channel',
+    loadChildren: () => import('./core/channel/channel.module').then(m => m.ChannelModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'statusgroup',
+    loadChildren: () => import('./core/statusgroup/statusgroup.module').then(m => m.StatusgroupModule),
+    canActivate: [AuthGuard]
   }
 ];
 
