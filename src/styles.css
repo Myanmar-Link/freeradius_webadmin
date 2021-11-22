@@ -26,3 +26,39 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width {
     width: 100%;
 }
+
+.danger {
+    background-color: red!important;
+    color: #fff!important;
+}
+
+.success {
+    background-color: #699320!important;
+    color: #fff!important;
+}
+
+.danger-text {
+    color: red!important;
+    font-weight: 500;
+}
+
+.success-text {
+    color: #699320!important;
+    font-weight: 500;
+}
+
+.action-btn-wrapper > button {
+    margin-left: 15px;
+}
+
+.action-btn-wrapper > button:first-child {
+    margin-left: 0px;
+}
+
+.edit-model {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}

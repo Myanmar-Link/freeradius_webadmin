@@ -20,11 +20,15 @@ export class ListComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService
-  ) { }
+  ) {
+  }
 
-  async ngOnInit() {
-    
+  private async loadingData() {
     this.employeeList = await this.employeeService.getAllEmployee();
+  }
+
+  ngOnInit() {
+    this.loadingData();
   }
 
 }

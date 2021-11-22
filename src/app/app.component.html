@@ -18,7 +18,7 @@
                     </mat-expansion-panel-header>
 
                     <button mat-button class="menu-btn" *ngFor="let child of item.children" (click)="link(child)">
-                        <mat-icon> keyboard_arrow_right </mat-icon>
+                        <mat-icon> arrow_right </mat-icon>
                         <span>{{child.title}}</span>
                     </button>
                 </mat-expansion-panel>
@@ -38,6 +38,11 @@
                 <button mat-button>
                     <mat-icon>account_circle</mat-icon>
                     <span> Aung Htet Paing</span>
+                </button>
+
+                <button mat-button (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                    <span> Logout </span>
                 </button>
             </mat-toolbar-row>
         </mat-toolbar>

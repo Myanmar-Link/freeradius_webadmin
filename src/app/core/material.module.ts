@@ -11,10 +11,29 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const MaterialModules: any = [
-  MatInputModule, MatButtonModule, MatSnackBarModule, MatToolbarModule, MatIconModule, MatMenuModule,
-  MatSidenavModule, MatExpansionModule, MatCardModule, MatCheckboxModule, MatTableModule
+  MatInputModule, 
+  MatButtonModule, 
+  MatSnackBarModule, 
+  MatToolbarModule, 
+  MatIconModule, 
+  MatMenuModule,
+  MatSidenavModule, 
+  MatExpansionModule,
+  MatCardModule, 
+  MatCheckboxModule, 
+  MatTableModule, 
+  MatProgressBarModule,
+  MatChipsModule, 
+  MatDialogModule, 
+  MatPaginatorModule,
+  MatSortModule
 ];
 
 @NgModule({

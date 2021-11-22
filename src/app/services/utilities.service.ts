@@ -57,4 +57,15 @@ export class UtilitiesService {
     return CryptoJS.SHA256('mmlink_free_radius').toString().toLocaleUpperCase();
   }
 
+  /**
+   * Table Sort 
+   * @param a 
+   * @param b 
+   * @param isAsc 
+   * @returns 
+   */
+  public compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PERMISSION } from 'src/app/models/permission.model';
+import { PermissionService } from 'src/app/services/permission.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
@@ -19,10 +20,10 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private utilitiesService: UtilitiesService,
-    private route: Router
+    private permissionService: PermissionService
   ) { }
 
-  create() {
+  async create() {
     if(this.name === '') {
       return this.utilitiesService.openToast('Permission name is required', 'REQUIRED')
     }
@@ -39,6 +40,11 @@ export class CreateComponent implements OnInit {
       delete: this.del
     }
 
+    this.isLoading = true;
+    const response = await this.permissionService.create(newPermission);
+    console.log(response);
+    
+    this.isLoading = false;
     return;
   }
 

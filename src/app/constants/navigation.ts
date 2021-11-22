@@ -6,6 +6,10 @@ export const sideMenu = [
       {
         title: 'Create',
         url: '/permission/create'
+      },
+      {
+        title: 'List',
+        url: '/permission'
       }
     ]
   },

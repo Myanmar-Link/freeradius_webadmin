@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   isLogged: boolean = false;
   showFiller: boolean = false;
   appMenu: MENU[] = sideMenu;
-  
+
   permission: PERMISSION = {
     read: false,
     write: false,
@@ -35,6 +35,10 @@ export class AppComponent implements OnInit {
 
   link(page: any) {
     return this.route.navigateByUrl(page.url);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   ngOnInit(): void {
