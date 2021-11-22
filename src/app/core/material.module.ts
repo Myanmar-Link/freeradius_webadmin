@@ -10,14 +10,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
 
 const MaterialModules: any = [
   MatInputModule, MatButtonModule, MatSnackBarModule, MatToolbarModule, MatIconModule, MatMenuModule,
-  MatSidenavModule, MatExpansionModule, MatCardModule, MatCheckboxModule
+  MatSidenavModule, MatExpansionModule, MatCardModule, MatCheckboxModule, MatTableModule
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     ...MaterialModules
   ],

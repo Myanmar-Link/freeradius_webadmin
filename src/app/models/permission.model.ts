@@ -3,5 +3,6 @@ export interface PERMISSION {
     read: boolean;
     write: boolean;
     edit: boolean;
-    del: boolean;
+    del?: boolean;
+    delete?: boolean
 }

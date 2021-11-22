@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { sideMenu } from './constants/navigation';
 import { CHILDREN_MENU, MENU } from './models/menu.model'
 import { PERMISSION } from './models/permission.model';
@@ -17,17 +18,19 @@ export class AppComponent implements OnInit {
   isLogged: boolean = false;
   showFiller: boolean = false;
   appMenu: MENU[] = sideMenu;
+  
   permission: PERMISSION = {
     read: false,
     write: false,
     edit: false,
     del: false
   }
+  auth$: any;
 
   constructor(
     private authService: AuthService,
     private utilitiesService: UtilitiesService,
-    private route: Router
+    private route: Router,
   ) { }
 
   link(page: any) {
@@ -64,5 +67,7 @@ export class AppComponent implements OnInit {
         })
       });
     }
+
+    
   }
 }

@@ -1,4 +1,4 @@
-<router-outlet *ngIf="!isLogged"></router-outlet>
+<router-outlet *ngIf="isLogged === false"></router-outlet>
 
 <mat-drawer-container autosize *ngIf="isLogged">
     <mat-drawer #drawer mode="side">

@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { UtilitiesService } from './utilities.service';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 const httpErrMessages = {
   UNAUTHORIZED : 'Unauthorized! Invalid access token. Please login again.',
@@ -13,7 +16,8 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private utitlitesService: UtilitiesService
+    private utitlitesService: UtilitiesService,
+    private injector : Injector
   ) { }
 
   private httpErrorHandler(status: number) {
@@ -22,6 +26,8 @@ export class ApiService {
     }
 
     if(status === 401) {
+      const auth = this.injector.get(AuthService);
+      auth.logout();
       return this.utitlitesService.openToast(httpErrMessages.UNAUTHORIZED);
     }
 
@@ -29,8 +35,8 @@ export class ApiService {
   }
 
   async get(url: string, options?: any): Promise<any> {
-    return this.http.get(`${environment.apiUrl}/${url}`, options).toPromise().then((respone: any) => {
-      return respone;
+    return this.http.get(`${environment.apiUrl}/${url}`, options).toPromise().then((response: any) => {
+      return response;
     }).catch((error: any) => {
       return this.httpErrorHandler(error.status);
     });

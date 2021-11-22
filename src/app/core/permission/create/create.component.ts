@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PERMISSION } from 'src/app/models/permission.model';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
@@ -28,6 +29,14 @@ export class CreateComponent implements OnInit {
 
     if(this.read === false && this.write === false && this.edit === false && this.del === false){
       return this.utilitiesService.openToast('Select one permission type.', 'CHOOSE');
+    }
+
+    const newPermission: PERMISSION = {
+      permission_name: this.name,
+      write: this.write,
+      read: this.read,
+      edit: this.edit,
+      delete: this.del
     }
 
     return;
