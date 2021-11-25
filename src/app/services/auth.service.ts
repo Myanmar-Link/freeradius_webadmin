@@ -80,7 +80,7 @@ export class AuthService {
     localStorage.clear();
     this.currentTokenSubject.next(null);
     this.currentPermissionSubject.next(null);
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
     return;
   }
 }

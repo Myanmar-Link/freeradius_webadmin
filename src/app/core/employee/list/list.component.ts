@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
   }
 
   private async loadingData() {
-    this.employeeList = await this.employeeService.getAllEmployee();
+    this.employeeList = await this.employeeService.getAll();
   }
 
   ngOnInit() {

@@ -1,0 +1,62 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row">
+        <table mat-table [dataSource]="servicePlanList" matSort class="full-width">
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Plan</th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="download_limit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Download Limit</th>
+                <td mat-cell *matCellDef="let element"> {{element.download_limit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="upload_limit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Upload Limit</th>
+                <td mat-cell *matCellDef="let element"> {{element.upload_limit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total_limit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Limit</th>
+                <td mat-cell *matCellDef="let element"> {{element.total_limit}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="expriry_date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> expriry Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.expriry_date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="balance">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
+                <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-chip-list>
+                        <mat-chip class="{{ element.status === true ? 'success' : 'danger'}}"> 
+                            {{ element.status === true ? 'Active' : 'Disable'}}
+                        </mat-chip>
+                      </mat-chip-list>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-btn-wrapper">
+                    <button mat-raised-button color="primary" (click)="openEditModel(element)"> Edit </button>
+                    <button mat-raised-button class="{{element.status === false ? 'danger' : '' }}" [disabled]="element.status"> Delete </button>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[15, 30, 50, 100, 500, 1000]"></mat-paginator>
+    </div>
+</div>
+

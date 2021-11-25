@@ -31,8 +31,33 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'department',
+    loadChildren: () => import('./core/department/department.module').then(m => m.DepartmentModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'address',
+    loadChildren: () => import('./core/address/address.module').then(m => m.AddressModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'employee',
     loadChildren: () => import('./core/employee/employee.module').then(m => m.EmployeeModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'service-plan',
+    loadChildren: () => import('./core/service-plan/service-plan.module').then(m => m.ServicePlanModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'customer-group',
+    loadChildren: () => import('./core/customer-group/customer-group.module').then(m => m.CustomerGroupModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'company',
+    loadChildren: () => import('./core/company/company.module').then(m => m.CompanyModule),
     canActivate: [AuthGuard]
   }
 ];

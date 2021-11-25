@@ -1,0 +1,85 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-form-field class="full-width">
+            <mat-label> Company Name </mat-label>
+            <input matInput placeholder="Enter company name" [(ngModel)]="company_name" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Contact Person </mat-label>
+            <input matInput placeholder="Enter contact person" [(ngModel)]="contact_person" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Company Type </mat-label>
+            <input matInput placeholder="Enter Company Type" [(ngModel)]="company_type"/>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Email Address</mat-label>
+            <input matInput placeholder="Enter email address" [(ngModel)]="email_address"/>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Phone Number </mat-label>
+            <input matInput placeholder="Enter phone number" [(ngModel)]="phone_number" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Floor </mat-label>
+            <input matInput placeholder="Enter floor number" [(ngModel)]="floor" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Building Number </mat-label>
+            <input matInput placeholder="Enter building number" [(ngModel)]="building_number" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Street </mat-label>
+            <input matInput placeholder="Enter street" [(ngModel)]="street" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Near Street </mat-label>
+            <input matInput placeholder="Enter near street" [(ngModel)]="near_street" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Location (Lat,Long) </mat-label>
+            <input matInput placeholder="Enter location" [(ngModel)]="location" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> State </mat-label>
+            <mat-select [(ngModel)]="state_id" (selectionChange)="chooseState($event.value)" [disabled]="stateList.length > 0 ? false : true" >
+                <mat-option *ngFor="let state of stateList" [value]="state.id">
+                    {{state.state_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Township </mat-label>
+            <mat-select [(ngModel)]="township_id" (selectionChange)="chooseTownship($event.value)" [disabled]="townshipList.length > 0 ? false : true" >
+                <mat-option *ngFor="let township of townshipList" [value]="township.id">
+                    {{township.township_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Ward </mat-label>
+            <mat-select [(ngModel)]="ward_id" (selectionChange)="chooseWard($event.value)" [disabled]="wardList.length > 0 ? false : true" >
+                <mat-option *ngFor="let ward of wardList" [value]="ward.id">
+                    {{ward.ward_name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>
+</div>
+

@@ -1,0 +1,26 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row">
+        <table mat-table [dataSource]="customerGroupList" matSort class="full-width">
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-btn-wrapper">
+                    <button mat-raised-button color="primary" (click)="openEditModel(element)"> Edit </button>
+                    <button mat-raised-button color="primary" (click)="openDelModel(element)"> Delete </button>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[15, 30, 50, 100, 500, 1000]"></mat-paginator>
+    </div>
+</div>
+

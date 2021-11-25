@@ -1,1 +1,137 @@
-<p> employee create works! </p>
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 mt-2">
+            <mat-card class="create-form">
+                <mat-card-header>
+                    <mat-card-title> Create Employee </mat-card-title>
+                    <mat-card-subtitle> Personal Information </mat-card-subtitle>
+                </mat-card-header>
+                
+                <mat-card-content>
+                    <mat-form-field class="full-width">
+                        <mat-label> Employee Full Name </mat-label>
+                        <input matInput placeholder="Enter employee full name" [(ngModel)]="name" />
+                    </mat-form-field>
+
+                    <div class="nrc-input-select-wrapper">
+                        <mat-form-field class="nrc_code">
+                            <mat-label> Code </mat-label>
+                            <mat-select [(ngModel)]="nrc_code" (selectionChange)="chooseCode($event)">
+                                <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" [value]="number">
+                                  {{number}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="nrc_region">
+                            <mat-label> Region </mat-label>
+                            <mat-select [(ngModel)]="nrc_region" (selectionChange)="chooseRegion($event)">
+                                <mat-option *ngFor="let region of nrcRegionList" [value]="region.name_en">
+                                  {{region.name_en}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="nrc_number">
+                            <mat-label> NRC Number</mat-label>
+                            <input matInput placeholder="Enter NRC Number" [(ngModel)]="nrc_number" maxlength="6" />
+                        </mat-form-field>
+                    </div>
+
+
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Phone Number</mat-label>
+                        <input matInput placeholder="Enter phone number" [(ngModel)]="phone" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Email Address </mat-label>
+                        <input matInput placeholder="Enter employee email address" type="email" [(ngModel)]="email" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Position </mat-label>
+                        <input matInput placeholder="Enter employee position" [(ngModel)]="position" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Permission </mat-label>
+                        <mat-select [(ngModel)]="permission_id" (selectionChange)="choosePermission($event)" [disabled]="permissionList.length > 0 ? false : true">
+                            <mat-option *ngFor="let permission of permissionList" [value]="permission.id">
+                              {{permission.permission_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Department </mat-label>
+                        <mat-select [(ngModel)]="department_id" (selectionChange)="chooseDepartment($event)" [disabled]="departmentList.length > 0 ? false : true">
+                            <mat-option *ngFor="let department of departmentList" [value]="department.id">
+                              {{department.department_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> State </mat-label>
+                        <mat-select [(ngModel)]="state_id" (selectionChange)="chooseState($event.value)" [disabled]="stateList.length > 0 ? false : true">
+                            <mat-option *ngFor="let state of stateList" [value]="state.id">
+                              {{state.state_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Township </mat-label>
+                        <mat-select [(ngModel)]="township_id" (selectionChange)="chooseTownship($event.value)" [disabled]="townshipList.length > 0 ? false : true">
+                            <mat-option *ngFor="let township of townshipList" [value]="township.id">
+                              {{township.township_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Ward </mat-label>
+                        <mat-select [(ngModel)]="ward_id" (selectionChange)="chooseWard($event.value)" [disabled]="wardList.length > 0 ? false : true">
+                            <mat-option *ngFor="let ward of wardList" [value]="ward.id">
+                              {{ward.ward_name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Floor </mat-label>
+                        <input matInput placeholder="Enter floor" [(ngModel)]="floor" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Building Number </mat-label>
+                        <input matInput placeholder="Enter building number" [(ngModel)]="building_number" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Street </mat-label>
+                        <input matInput placeholder="Enter street" [(ngModel)]="street" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Near Street </mat-label>
+                        <input matInput placeholder="Enter near street" [(ngModel)]="near_street" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Location </mat-label>
+                        <input matInput placeholder="Enter location" [(ngModel)]="location" />
+                    </mat-form-field>
+                </mat-card-content>
+        
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" [disabled]="isLoading" (click)="create()"> Create </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
