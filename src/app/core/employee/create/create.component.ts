@@ -12,14 +12,15 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 })
 export class CreateComponent implements OnInit {
 
-  name: string | undefined;
-  phone: number | undefined;
-  email: string | undefined;
-  position: string | undefined;
+  name: string = '';
+  phone: string = '';
+  email: string = '';
+  position: string = '';
+  password: string = '';
   nrc_code: number = 1;
-  nrc_region: string | undefined;
-  nrc_number: string | undefined;
-  nrc: string | undefined;
+  nrc_region: string  = '';
+  nrc_number: string  = '';
+  nrc: string = '';
   floor: string | number = '';
   building_number: string | number = '';
   street: string | number = '';
@@ -162,12 +163,29 @@ export class CreateComponent implements OnInit {
    * @returns 
    */
   async create() {
-    if(this.name === '' || this.position === '' || this.email === '' || this.phone === undefined || this.nrc_number === '') {
+    if(this.name === '' || this.position === '' || this.email === '' || this.phone === undefined || this.nrc_number === '' || this.password === '') {
       return this.utitlitiesService.openToast('All fields are required', 'REQUIRED');
     }
 
     const newEmployee = {
-
+      permission_id: this.permission_id,
+      employee_name: this.name,
+      nrc: `${this.nrc_code}/${this.nrc_region}(N)/${this.nrc_number}`,
+      phone_number: this.phone,
+      email_address: this.email,
+      position: this.position,
+      password: this.password,
+      department_id: this.department_id,
+      address: {
+        floor: this.floor,
+        building_number: this.building_number,
+        street: this.street,
+        near_street: this.near_street,
+        ward_id: this.ward_id,
+        state_id: this.state_id,
+        township_id: this.township_id,
+        location: this.location
+      }
     }
 
     this.isLoading = true;

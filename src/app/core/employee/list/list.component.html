@@ -1,43 +1,54 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
 
-<table mat-table [dataSource]="employeeList" class="employee-table">
+<div class="container-fluid">
+    <div class="row">
+        <table mat-table [dataSource]="employeeList" matSort class="full-width">
+            <ng-container matColumnDef="employee_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.employee_name}} </td>
+            </ng-container>
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="department_name">
-      <th mat-header-cell *matHeaderCellDef> Department </th>
-      <td mat-cell *matCellDef="let element"> {{element.department_name}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="created_at">
-      <th mat-header-cell *matHeaderCellDef> Created At </th>
-      <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="updated_at">
-      <th mat-header-cell *matHeaderCellDef> Updated At </th>
-      <td mat-cell *matCellDef="let element"> {{element.updated_at}} </td>
-    </ng-container>
+            <ng-container matColumnDef="nrc">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> NRC </th>
+                <td mat-cell *matCellDef="let element"> {{element.nrc}} </td>
+            </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef> action</th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary"> Edit </button>
-            <button mat-raised-button color="primary"> Edit </button>
-            <button mat-raised-button color="primary"> Edit </button>
-        </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+            <ng-container matColumnDef="phone_number">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                <td mat-cell *matCellDef="let element"> {{element.phone_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="email_address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email_address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Position </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="locaiton">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+                <td mat-cell *matCellDef="let element"> 
+                  {{element.employee_address ? element.employee_address.locaiton : 'No Record'}} 
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-btn-wrapper">
+                    <button mat-raised-button color="primary" (click)="openEditModel(element)"> Edit </button>
+                    <button mat-raised-button color="primary" (click)="openDetialModel(element)"> Detail </button>
+                    <button mat-raised-button class="danger"> Delete </button>
+                </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[15, 30, 50, 100, 500, 1000]"></mat-paginator>
+    </div>
+</div>
+

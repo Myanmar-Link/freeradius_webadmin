@@ -58,4 +58,15 @@ export class EmployeeService {
       return error;
     });
   }
+  
+  async getById(id: string | number) {
+    return this.apiService.get(`${this.url}/${id}`).then((response: any) => {
+      if(response.status === 'Success') {
+        this.utilitiesService.openToast('Successfully get data', 'SUCCESS');
+      }
+      return response.data;
+    }).catch((error: any) => {
+      return error;
+    });
+  }
 }

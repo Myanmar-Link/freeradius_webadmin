@@ -13,7 +13,6 @@ import { EditComponent } from '../edit/edit.component';
 })
 export class ListComponent implements OnInit {
 
-
   servicePlanList: any = new MatTableDataSource([]);
   isLoading: boolean = true;
 

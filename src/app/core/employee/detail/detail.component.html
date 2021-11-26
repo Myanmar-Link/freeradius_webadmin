@@ -1,0 +1,183 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 mt-2">
+      <mat-card *ngIf="employee">
+        <mat-card-header>
+          <mat-card-title> Employee Information </mat-card-title>
+          <mat-card-subtitle>{{employee.employee_name}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="info-list-wrapper">
+            <div class="info-row">
+              <label> Employee Name </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.employee_name}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeInfo">
+                <input matInput [(ngModel)]="employee.employee_name" required />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Employee NRC </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.nrc}} </span>
+              <div class="nrc-input-select-wrapper" *ngIf="editEmployeeInfo">
+                <mat-form-field class="nrc_code">
+                    <mat-label> Code </mat-label>
+                    <mat-select [(ngModel)]="employee.nrc_code" (selectionChange)="chooseCode($event.value)">
+                        <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" [value]="number">
+                          {{number}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="nrc_region">
+                    <mat-label> Region </mat-label>
+                    <mat-select [(ngModel)]="employee.nrc_region" (selectionChange)="chooseRegion($event.value)">
+                        <mat-option *ngFor="let region of nrcRegionList" [value]="region.name_en">
+                          {{region.name_en}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="nrc_number">
+                    <mat-label> NRC Number</mat-label>
+                    <input matInput placeholder="Enter NRC Number" [(ngModel)]="employee.nrc_number" maxlength="6" required />
+                </mat-form-field>
+            </div>
+            </div>
+
+            <div class="info-row">
+              <label> Phone Number </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.phone_number}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeInfo">
+                <input matInput [(ngModel)]="employee.phone_number" required />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Email </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.email_address}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeInfo">
+                <input matInput [(ngModel)]="employee.email_address" required />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Position </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.position}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeInfo">
+                <input matInput [(ngModel)]="employee.position" required />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Department </label>
+              <span *ngIf="!editEmployeeInfo"> {{employee.department.department_name}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeInfo">
+                <mat-select [(ngModel)]="employee.department_id" (selectionChange)="chooseDepartment($event.value)">
+                  <mat-option *ngFor="let department of departmentList" [value]="department.id">
+                    {{department.department_name}}
+                  </mat-option>
+              </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="openEditForm('info')" color="primary" *ngIf="!editEmployeeInfo"> Edit </button>
+          <button mat-raised-button *ngIf="editEmployeeInfo" color="primary" (click)="saveEmployeeInfo()" [disabled]="isLoading"> Save </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="col-md-4 mt-2">
+      <mat-card *ngIf="employee">
+        <mat-card-header>
+          <mat-card-title> Employee Address Info </mat-card-title>
+          <mat-card-subtitle>{{employee.employee_name}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="info-list-wrapper">
+            <div class="info-row">
+              <label> Floor </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.address.floor}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <input matInput [(ngModel)]="employee.address.floor" />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Building Number </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.address.building_number}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <input matInput [(ngModel)]="employee.address.building_number" />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Street </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.address.street}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <input matInput [(ngModel)]="employee.address.street" />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Near Street </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.address.near_street}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <input matInput [(ngModel)]="employee.address.near_street" />
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> State </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.employee_address.state.state_name}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <mat-select [(ngModel)]="employee.address.state_id" (selectionChange)="chooseState($event.value)" [disabled]="stateList.length > 0 ? false : true">
+                  <mat-option *ngFor="let state of stateList" [value]="state.id">
+                    {{state.state_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Township </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.employee_address.township.township_name}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <mat-select [(ngModel)]="employee.address.township_id" (selectionChange)="chooseTownship($event.value)" [disabled]="townshipList.length > 0 ? false : true">
+                  <mat-option *ngFor="let township of townshipList" [value]="township.id">
+                    {{township.township_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="info-row">
+              <label> Ward </label>
+              <span *ngIf="!editEmployeeAddress"> {{employee.employee_address.ward.ward_name}} </span>
+              <mat-form-field class="full-width" *ngIf="editEmployeeAddress">
+                <mat-select [(ngModel)]="employee.address.ward_id" (selectionChange)="chooseWard($event.value)" [disabled]="wardList.length > 0 ? false : true">
+                  <mat-option *ngFor="let ward of wardList" [value]="ward.id">
+                    {{ward.ward_name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="openEditForm('address')" color="primary" *ngIf="!editEmployeeAddress"> Edit </button>
+          <button mat-raised-button *ngIf="editEmployeeAddress" color="primary" (click)="saveEmployeeAddress()" [disabled]="isLoading"> Save </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+  
