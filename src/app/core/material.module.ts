@@ -42,6 +42,7 @@ const MaterialModules: any = [
 
 @NgModule({
   declarations: [
+  
   ],
   imports: [
     ...MaterialModules

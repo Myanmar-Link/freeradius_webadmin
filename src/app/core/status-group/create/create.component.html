@@ -1,0 +1,26 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 mt-2">
+            <mat-card>
+                <mat-card-title> Status Name </mat-card-title>
+
+                <mat-card-content class="mt">
+                    <mat-form-field class="full-width">
+                        <mat-label> Status Name </mat-label>
+                        <input matInput placeholder="Enter channel name" [(ngModel)]="status_name" />
+                    </mat-form-field>
+
+
+                </mat-card-content>
+                
+
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" [disabled]="isLoading" (click)="create()"> Create </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,10 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-form-field class="full-width">
+            <mat-label> Status Name </mat-label>
+            <input matInput placeholder="Enter company name" [(ngModel)]="status_name" />
+        </mat-form-field>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>

@@ -96,5 +96,33 @@ export const sideMenu = [
         url: '/employee/list'
       }
     ]
+  },
+  {
+    title: 'Channel Table',
+    icon: 'dns',
+    children: [
+      {
+        title: 'Create',
+        url: '/channel/create'
+      },
+      {
+        title: 'List',
+        url: '/channel/list'
+      }
+    ]
+  },
+  {
+    title: 'Status Group',
+    icon: 'fact_check',
+    children: [
+      {
+        title: 'create',
+        url: '/status-group/create'
+      },
+      {
+        title: 'list',
+        url: '/status-group/list'
+      }
+    ]
   }
 ]

@@ -59,6 +59,16 @@ const routes: Routes = [
     path: 'company',
     loadChildren: () => import('./core/company/company.module').then(m => m.CompanyModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'channel',
+    loadChildren: () => import('./core/channel-table/channel-table.module').then(m => m.ChannelTableModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'status-group',
+    loadChildren: () => import('./core/status-group/status-group.module').then(m => m.StatusGroupModule),
+    canActivate: [AuthGuard]
   }
 ];
 
