@@ -16,9 +16,9 @@ import { EditComponent } from '../edit/edit.component';
 export class ListComponent implements OnInit {
 
   channelList: any =new MatTableDataSource([]);
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
-  displayedColumns: string[] = ['id', 'channel_name', 'status', 'created_at', 'updated_at', 'action'];
+  displayedColumns: string[] = ['index', 'channel_name', 'status', 'created_at', 'updated_at', 'action'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -29,6 +29,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   private async loadingData(){
+    this.isLoading = true;
     const getChannelList = await this.channelService.getAll();
     
     this.channelList = new MatTableDataSource(getChannelList);

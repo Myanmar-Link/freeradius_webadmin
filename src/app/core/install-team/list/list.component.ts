@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   installTeamList: any = new MatTableDataSource([]);
   isLoading: boolean = false;
 
-  displayedColumns: string[] = ['id', 'install_team_name', 'employee_id', 'status', 'created_at', 'updated_at', 'action'];
+  displayedColumns: string[] = ['index', 'install_team_name', 'employee_id', 'status', 'created_at', 'updated_at', 'action'];
 
   constructor(
     private installTeamService: InstallTeamService,

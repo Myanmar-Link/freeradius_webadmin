@@ -3,9 +3,9 @@
 <div class="container-fluid">
     <div class="row">
         <table mat-table [dataSource]="statusGroupList" matSort class="full-width">
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No </th>
+                <td mat-cell *matCellDef="let element ; let i = index"> {{i + 1}} </td>
             </ng-container>
 
             <ng-container matColumnDef="status_name">
@@ -15,7 +15,13 @@
 
             <ng-container matColumnDef="active">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
-                <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+                <td mat-cell *matCellDef="let element">
+                    <mat-chip-list>
+                        <mat-chip class="{{element.active === true ? 'success' : 'danger'}}">
+                             {{element.active === true ? 'Enable' : 'Disable'}}
+                        </mat-chip> 
+                    </mat-chip-list> 
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="created_at">
@@ -32,7 +38,7 @@
                 <th mat-header-cell *matHeaderCellDef> Action </th>
                 <td mat-cell *matCellDef="let element" class="action-btn-wrapper">
                     <button mat-raised-button color="primary" (click)="openEditModel(element)"> Edit </button>
-                    <button mat-raised-button class="{{element.status === false ? 'danger' : '' }}" [disabled]="element.status" (click)="openDelModel(element)"> Delete </button>
+                    <button mat-raised-button class="{{element.active === false ? 'danger' : '' }}" [disabled]="element.active" (click)="openDelModel(element)"> Delete </button>
                 </td>
             </ng-container>
           

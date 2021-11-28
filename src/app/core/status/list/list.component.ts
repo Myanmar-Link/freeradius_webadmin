@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   statusList: any = new MatTableDataSource([]);
   isLoading: boolean = true;
 
-  displayedColumns: string[] = ['id', 'status_group_id', 'status_name', 'remark', 'created_at', 'updated_at', 'action'];
+  displayedColumns: string[] = ['id', 'status_group_name', 'status_name', 'remark', 'created_at', 'updated_at', 'action'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) private sort: MatSort | any;
