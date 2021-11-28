@@ -69,6 +69,16 @@ const routes: Routes = [
     path: 'status-group',
     loadChildren: () => import('./core/status-group/status-group.module').then(m => m.StatusGroupModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'status',
+    loadChildren: () => import('./core/status/status.module').then(m => m.StatusModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'install-team',
+    loadChildren: () => import('./core/install-team/install-team.module').then(m => m.InstallTeamModule),
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -35,6 +35,7 @@ export class CreateComponent implements OnInit {
     }
     this.isLoading = true;
     await this.channelService.create(newRequest);
+    this.channel_name = '';
     this.isLoading = false;
     return;
   }

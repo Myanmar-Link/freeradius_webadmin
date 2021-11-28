@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StatusGroupService } from 'src/app/services/status-group.service';
+import { InstallTeamService } from 'src/app/services/install-team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
@@ -9,32 +9,35 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 })
 export class CreateComponent implements OnInit {
 
-  status_name: string = '';
+  install_team_name: string = '';
+  employee_id: number = 0;
   isLoading: boolean = false;
-  statusList: any[] = [];
+  teamList: any[] = [];
 
   constructor(
     private utilitiesService: UtilitiesService,
-    private statusGroupService: StatusGroupService
+    private installTeamService: InstallTeamService
   ) { }
 
   private async loadingData(){
     this.isLoading = true;
-    this.statusList = await this.statusGroupService.getAll();
-
+    this.teamList = await this.installTeamService.getAll();
+    
     this.isLoading = false;
   }
 
   async create(){
-    if(this.status_name === ''){
-      this.utilitiesService.openToast('Status name is required', 'REQUIRED');
+    if(this.install_team_name === '' || this.employee_id === 0){
+      this.utilitiesService.openToast('All fields must be filled', 'REQUIRED');
     }
     const newRequest = {
-      status_name: this.status_name
+      install_team_name: this.install_team_name,
+      employee_id: this.employee_id
     }
     this.isLoading = true;
-    this.statusGroupService.create(newRequest);
-    this.status_name = '';
+    await this.installTeamService.create(newRequest);
+    this.install_team_name = '';
+    this.employee_id = 0;
     this.isLoading = false;
     return;
   }

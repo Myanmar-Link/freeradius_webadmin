@@ -124,5 +124,33 @@ export const sideMenu = [
         url: '/status-group/list'
       }
     ]
+  },
+  {
+    title: 'Status',
+    icon: 'assessment',
+    children: [
+      {
+        title: 'Create',
+        url: '/status/create'
+      },
+      {
+        title: 'List',
+        url: '/status/list'
+      }
+    ]
+  },
+  {
+    title: 'Install Team',
+    icon: 'groups',
+    children: [
+      {
+        title: 'Create',
+        url: '/install-team/create'
+      },
+      {
+        title: 'List',
+        url: '/install-team/list'
+      }
+    ]
   }
 ]

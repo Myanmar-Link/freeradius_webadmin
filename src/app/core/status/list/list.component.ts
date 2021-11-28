@@ -1,12 +1,12 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { UtilitiesService } from 'src/app/services/utilities.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { StatusGroupService } from 'src/app/services/status-group.service';
-import { EditComponent } from '../edit/edit.component';
+import { StatusService } from 'src/app/services/status.service';
 import { DeleteComponent } from '../delete/delete.component';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-list',
@@ -15,36 +15,36 @@ import { DeleteComponent } from '../delete/delete.component';
 })
 export class ListComponent implements OnInit {
 
-  statusGroupList: any = new MatTableDataSource([]);
-  isLoading: boolean = false;
+  statusList: any = new MatTableDataSource([]);
+  isLoading: boolean = true;
 
-  displayedColumns: string[] = ['id', 'status_name', 'active', 'created_at', 'updated_at', 'action'];
+  displayedColumns: string[] = ['id', 'status_group_id', 'status_name', 'remark', 'created_at', 'updated_at', 'action'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  @ViewChild(MatSort) sort: MatSort | any;
+  @ViewChild(MatSort) private sort: MatSort | any;
 
   constructor(
-    private utilitiesService: UtilitiesService,
-    private dialog: MatDialog,
-    private statusGroupService: StatusGroupService
+    private statusService: StatusService,
+    private dialog: MatDialog
   ) { }
 
   private async loadingData(){
-    this.isLoading = true;
-    const getStatusList = await this.statusGroupService.getAll();
+    const getStatusList = await this.statusService.getAll();
 
-    this.statusGroupList = new MatTableDataSource(getStatusList);
-    this.statusGroupList.paginator = this.paginator;
-    this.statusGroupList.sort = this.sort;
+    this.statusList = new MatTableDataSource(getStatusList);
+    this.statusList.paginator = this.paginator;
+    this.statusList.sort = this.sort;
 
-    this.isLoading = false;
+    this.isLoading = false
+  
   }
 
-  openEditModel(element:any){
+  openEditModel(element: any){
     const dialogRef = this.dialog.open(EditComponent, {data: element, width: '400px'});
     dialogRef.afterClosed().subscribe(() => {
       this.loadingData();
-    });
+    })
+  
   }
 
   openDelModel(element: any){
@@ -52,9 +52,10 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.loadingData();
     })
+
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
     await this.loadingData();
   }
 

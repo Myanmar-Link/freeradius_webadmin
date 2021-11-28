@@ -36,8 +36,10 @@ export class ApiService {
 
   async get(url: string, options?: any): Promise<any> {
     return this.http.get(`${environment.apiUrl}/${url}`, options).toPromise().then((response: any) => {
+      console.log(response);
       return response;
     }).catch((error: any) => {
+      console.log(error);
       return this.httpErrorHandler(error.status);
     });
   }
