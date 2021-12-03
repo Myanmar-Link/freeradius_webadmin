@@ -10,7 +10,7 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 export class CreateComponent implements OnInit {
 
   install_team_name: string = '';
-  employee_id: number = 0;
+  employee_id: number | null = null;
   isLoading: boolean = false;
   teamList: any[] = [];
 
@@ -27,7 +27,7 @@ export class CreateComponent implements OnInit {
   }
 
   async create(){
-    if(this.install_team_name === '' || this.employee_id === 0){
+    if(this.install_team_name === '' || this.employee_id === 0 || this.employee_id === null){
       this.utilitiesService.openToast('All fields must be filled', 'REQUIRED');
     }
     const newRequest = {
@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
     this.isLoading = true;
     await this.installTeamService.create(newRequest);
     this.install_team_name = '';
-    this.employee_id = 0;
+    this.employee_id = null;
     this.isLoading = false;
     return;
   }

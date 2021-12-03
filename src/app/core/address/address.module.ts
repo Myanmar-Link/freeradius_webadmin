@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StateComponent } from './state/state.component';
 import { EditComponent } from './state/edit/edit.component';
 import { TownshipComponent } from './township/township.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     StateComponent,
     EditComponent,
-    TownshipComponent
+    TownshipComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,

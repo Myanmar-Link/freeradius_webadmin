@@ -9,7 +9,7 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 })
 export class CreateComponent implements OnInit {
 
-  status_group_id: number = 0;
+  status_group_id: number | null = null;
   status_name: string = '';
   remark: string = '';
   isLoading: boolean = false;
@@ -28,7 +28,7 @@ export class CreateComponent implements OnInit {
 
   }
   async create(){
-    if(this.status_group_id === 0 || this.status_name === '' || this.remark === ''){
+    if(this.status_group_id === 0 || this.status_name === '' || this.remark === '' || this.status_group_id === null){
       this.utilitiesService.openToast('All field must be filled', 'REQUIRED');
     }
     const newRequest = {
@@ -38,7 +38,7 @@ export class CreateComponent implements OnInit {
     }
     this.isLoading = true;
     this.statusService.create(newRequest);
-    this.status_group_id = 0 ;
+    this.status_group_id = null ;
     this.status_name = '';
     this.remark = '';
     this.isLoading = false;

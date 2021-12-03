@@ -1,0 +1,37 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-form-field class="full-width">
+            <mat-label> State ID </mat-label>
+            <input type="number" matInput placeholder="Enter state id" [(ngModel)]="state_id" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Township ID </mat-label>
+            <input type="number" matInput placeholder="Enter township id" [(ngModel)]="township_id" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Ward ID</mat-label>
+            <input type="number" matInput placeholder="Enter ward id" [(ngModel)]="ward_id" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Street ID </mat-label>
+            <input type="number" matInput placeholder="Enter street id" [(ngModel)]="state_id" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Housing Name </mat-label>
+            <input matInput placeholder="Enter housing name" [(ngModel)]="housing_name" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Location </mat-label>
+            <input matInput placeholder="Enter location" [(ngModel)]="location" />
+        </mat-form-field>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>
+
+

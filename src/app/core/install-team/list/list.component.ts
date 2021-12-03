@@ -50,7 +50,7 @@ export class ListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteComponent, {data: element, width: '400px'});
     dialogRef.afterClosed().subscribe(() => {
       this.loadingData();
-    })
+    });
   }
 
   ngOnInit(): void {

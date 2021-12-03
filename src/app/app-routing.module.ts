@@ -79,6 +79,31 @@ const routes: Routes = [
     path: 'install-team',
     loadChildren: () => import('./core/install-team/install-team.module').then(m => m.InstallTeamModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'housing',
+    loadChildren: () => import('./core/housing/housing.module').then(m => m.HousingModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'township',
+    loadChildren: () => import('./core/township/township.module').then(m => m.TownshipModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'ward',
+    loadChildren: () => import('./core/ward/ward.module').then(m => m.WardModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'street',
+    loadChildren: () => import('./core/street/street.module').then(m => m.StreetModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./core/account/account.module').then(m => m.AccountModule),
+    canActivate: [AuthGuard]
   }
 ];
 

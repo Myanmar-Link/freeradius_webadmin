@@ -1,0 +1,62 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-card-content class="mt">
+            <mat-form-field class="full-width">
+                <mat-label> MAC Address </mat-label>
+                <input matInput placeholder="Enter MAC Address" [(ngModel)]="mac_address" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Type ID</mat-label>
+                <input matInput placeholder="Enter Type ID" [(ngModel)]="type_id" />
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width">
+                <mat-label> Password </mat-label>
+                <input type="password" matInput placeholder="Enter Password" [(ngModel)]="password" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> MAC Address CM </mat-label>
+                <input matInput placeholder="Enter MAC Address CM" [(ngModel)]="mac_address_cm" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Is IP Address Mode CM </mat-label>
+                <input matInput placeholder="Is IP Address Mode CM" [(ngModel)]="is_ip_address_mode_cm" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Is IP Address Mode CPE </mat-label>
+                <input matInput placeholder="Is IP Address Mode CPE" [(ngModel)]="is_ip_address_mode_cpe" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> MAC Address CPE </mat-label>
+                <input matInput placeholder="Enter MAC Address CPE" [(ngModel)]="mac_address_cpe" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Allow This MAC Only </mat-label>
+                <input matInput placeholder="Allow This MAC Only" [(ngModel)]="allow_this_mac_only" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> IP Address CPE ID </mat-label>
+                <input matInput placeholder="Enter IP Address CPE ID" [(ngModel)]="ip_address_mode_cpe_id" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Simultaneous Use </mat-label>
+                <input matInput placeholder="Simultaneous" [(ngModel)]="simultaneous_use" />
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <mat-label> Vat ID </mat-label>
+                <input matInput placeholder="Simultaneous" [(ngModel)]="vat_id" />
+            </mat-form-field>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>

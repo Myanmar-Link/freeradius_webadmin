@@ -1,0 +1,16 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-form-field class="full-width">
+            <mat-label> Township Name </mat-label>
+            <input matInput placeholder="Enter Township Name" [(ngModel)]="township_name" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> State ID </mat-label>
+            <input matInput placeholder="Enter State ID" [(ngModel)]="state_id" />
+        </mat-form-field>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>
+

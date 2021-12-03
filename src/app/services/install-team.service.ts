@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { UtilitiesService } from './utilities.service';

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListComponent } from './list/list.component';
 import { StateComponent } from './state/state.component';
 import { TownshipComponent } from './township/township.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'township',
     component: TownshipComponent
+  },
+  {
+    path: 'list',
+    component: ListComponent
   }
 ];
 

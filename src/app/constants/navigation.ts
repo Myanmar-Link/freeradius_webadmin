@@ -80,6 +80,10 @@ export const sideMenu = [
       {
         title: 'Township',
         url: '/address/township'
+      },
+      {
+        title: 'List',
+        url: 'address/list'
       }
     ]
   },
@@ -150,6 +154,76 @@ export const sideMenu = [
       {
         title: 'List',
         url: '/install-team/list'
+      }
+    ]
+  },
+  {
+    title: 'Housing',
+    icon: 'maps_home_work',
+    children: [
+      {
+        title: 'Create',
+        url: '/housing/create'
+      },
+      {
+        title: 'List',
+        url: '/housing/list'
+      }
+    ]
+  },
+  {
+    title: 'Township',
+    icon: 'location_city',
+    children: [
+      {
+        title: 'Create',
+        url: '/township/create'
+      },
+      {
+        title: 'List',
+        url: '/township/list'
+      }
+    ]
+  },
+  {
+    title: 'Ward',
+    icon: 'location_searching',
+    children: [
+      {
+        title: 'Create',
+        url: '/ward/create'
+      },
+      {
+        title: 'List',
+        url: '/ward/list'
+      }
+    ]
+  },
+  {
+    title: 'Street',
+    icon: 'edit_road',
+    children: [
+      {
+        title: 'Create',
+        url: '/street/create'
+      },
+      {
+        title: 'List',
+        url: '/street/list'
+      }
+    ]
+  },
+  {
+    title: 'Accounts',
+    icon: 'account_box',
+    children: [
+      {
+        title: 'create',
+        url: '/account/create'
+      },
+      {
+        title: 'list',
+        url: '/account/list'
       }
     ]
   }

@@ -65,6 +65,39 @@ export class AddressService {
     });
   }
 
+  async getAddress(){
+    return this.apiService.get('addresses').then((response: any) => {
+      return response.data;
+    }).catch((error: any) =>{
+      return error;
+    });
+  }
+
+
+  async getCompany(){
+    return this.apiService.get('addresses?type=company').then((response: any) => {
+      return response.data;
+    }).catch((error: any) => {
+      return error;
+    });
+  }
+
+  async getOrderForm(){
+    return this.apiService.get('addresses?type=orderform').then((response: any) => {
+      return response.data;
+    }).catch((error: any) => {
+      return error;
+    });
+  }
+
+  async getEmployee(){
+    return this.apiService.get('addresses?type=employee').then((response: any) => {
+      return response.data;
+    }).catch((error: any) => {
+      return error;
+    });
+  }
+
   /**
    * [Township]
    * Update Address Township

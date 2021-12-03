@@ -1,0 +1,15 @@
+<div class="edit-model">
+    <mat-card-content class="mt">
+        <mat-form-field class="full-width">
+            <mat-label> Ward ID </mat-label>
+            <input matInput placeholder="Enter ward id" [(ngModel)]="ward_id" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label> Street Name </mat-label>
+            <input matInput placeholder="Enter street name" [(ngModel)]="street_name" />
+        </mat-form-field>
+
+    <div class="btn-wrapper">
+        <button mat-raised-button color="primary" (click)="update()" disabled="{{isLoading}}"> Edit </button>
+    </div>
