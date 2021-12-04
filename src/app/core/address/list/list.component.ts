@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddressService } from 'src/app/services/address.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { AddressModule } from '../address.module';
 
 @Component({
   selector: 'app-list',
@@ -37,28 +38,29 @@ export class ListComponent implements OnInit {
     this.isLoading = false;
   }
 
-  async showSelectedTable(){
-  }
+  async filterAdd(value: string){
+    switch(value){
+      case "orderForm":
+        this.isLoading = true;
+        const getForm = await this.addressService.getOrderForm();
+        this.addressList = new MatTableDataSource(getForm);
+        this.isLoading = false;
+        break;
 
-  async showCompany(){
-    this.isLoading = true;
-    const getCompany = await this.addressService.getCompany();
-    this.addressList = new MatTableDataSource(getCompany);
-    this.isLoading =false;
-  }
-
-  async showOrderForm(){
-    this.isLoading = true;
-    const getOrderForm = await this.addressService.getOrderForm();
-    this.addressList = new MatTableDataSource(getOrderForm);
-    this.isLoading =false;
-  }
-
-  async showEmployee(){
-    this.isLoading = true;
-    const getEmployee = await this.addressService.getEmployee();
-    this.addressList = new MatTableDataSource(getEmployee);
-    this.isLoading =false;
+      case "employee":
+        this.isLoading = true;
+        const getemp = await this.addressService.getEmployee();
+        this.addressList = new MatTableDataSource(getemp);
+        this.isLoading = false;
+        break;
+      
+      case "company":
+        this.isLoading = true;
+        const getcom = await this.addressService.getCompany();
+        this.addressList = new MatTableDataSource(getcom);
+        this.isLoading = false;
+        break;
+    }
   }
 
   ngOnInit(): void {

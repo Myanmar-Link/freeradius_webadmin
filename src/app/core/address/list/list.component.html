@@ -1,20 +1,13 @@
 <mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
     
 
-<button mat-button [matMenuTriggerFor]="animals" class="filter"> Filter <mat-icon >vertical_align_bottom</mat-icon></button>
-    <mat-menu #animals="matMenu">
-        <button mat-menu-item (click)="showOrderForm()">Order Form</button>
-        <button mat-menu-item (click)="showEmployee()">Employee</button>
-        <button mat-menu-item (click)="showCompany()">Company</button>
-    </mat-menu>
-
     <form>
         <mat-form-field appearance="fill">
             <mat-label> Filter </mat-label>
-            <mat-select >
+            <mat-select (selectionChange)="filterAdd($event.value)">
               <mat-option value="orderForm">Order Form</mat-option>
-              <mat-option value="Employee">Employee</mat-option>
-              <mat-option value="Company">Company</mat-option>
+              <mat-option value="employee">Employee</mat-option>
+              <mat-option value="company">Company</mat-option>
             </mat-select>
           </mat-form-field>
 
