@@ -1,0 +1,218 @@
+<mat-progress-bar mode="indeterminate" color="primary" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 mt-2">
+            <mat-card>
+                <mat-card-title> Create Order Form </mat-card-title>
+
+                <mat-card-content class="mt">
+                    <mat-form-field class="full-width">
+                        <mat-label> Customer Name </mat-label>
+                        <input matInput placeholder="Enter customer name" [(ngModel)]="customer_name" />
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Service Plan Title</mat-label>
+                        <mat-select [(ngModel)]="service_plan_id" (selectionChange)="chooseServicePlan($event)">
+                            <mat-option *ngFor="let service_plan of servicePlanList" [value]="service_plan_id">
+                                {{service_plan.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label> Customer Group</mat-label>
+                        <mat-select [(ngModel)]="customer_group_id" (selectionChange)="chooseCustomerGroup($event)">
+                            <mat-option *ngFor="let customerGroup of customerGroupList" [value]="customer_group_id">
+                                {{customerGroup.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-card class="address">
+                        <mat-card-title><h2>Address</h2></mat-card-title>
+                        <mat-card-content>
+                            <mat-form-field class="full-width">
+                                <mat-label> Floor </mat-label>
+                                <input matInput placeholder="Enter Floor" [(ngModel)]="floor" />
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label> Building Number </mat-label>
+                                <input matInput placeholder="Enter Building Number" [(ngModel)]="building_number" />
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label> Street </mat-label>
+                                <input matInput placeholder="Enter Street" [(ngModel)]="street" />
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label> Near Street </mat-label>
+                                <input matInput placeholder="Enter Near Street" [(ngModel)]="near_street" />
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label> Ward Name</mat-label>
+                                <mat-select [(ngModel)]="ward_id" (selectionChange)="chooseWard($event.value)" [disabled]="wardList.length > 0 ? false: true">
+                                    <mat-option *ngFor="let ward of wardList" [value]="ward.id">
+                                        {{ward.ward_name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label> State Name</mat-label>
+                                <mat-select [(ngModel)]="state_id" (selectionChange)="chooseState($event.value)" [disabled]="stateList.length > 0 ? false : true">
+                                    <mat-option *ngFor="let state of stateList" [value]="state.id">
+                                        {{state.state_name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label> Township Name</mat-label>
+                                <mat-select [(ngModel)]="township_id" (selectionChange)="chooseTownship($event.value)" [disabled]="townshipList.length > 0 ? false : true">
+                                    <mat-option *ngFor="let township of townshipList" [value]="township.id">
+                                        {{township.township_name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width">
+                                <mat-label> Location </mat-label>
+                                <input matInput placeholder="Enter Location" [(ngModel)]="location" />
+                            </mat-form-field>
+                        </mat-card-content>
+                    </mat-card><br>
+                    
+                    <mat-card>
+                        <mat-card-title><h2>Passport</h2></mat-card-title>
+                        <mat-card-content>
+                            <mat-form-field>
+                                <mat-label>Passport</mat-label>
+                                <input matInput [(ngModel)]="passport" placeholder="Enter Passport">
+                            </mat-form-field>
+                            <mat-label>Passport Back Image</mat-label>
+                            <input type="file" #fileInput id="fileInput" name="uploadFile" accept="image/*" (change)="selectPassportBackImage($event)" />
+                            <mat-label>Passport Front Image</mat-label>
+                            <input type="file" #fileInput id="fileInput" name="uploadFile" accept="image/*" (change)="selectPassportFrontImage($event)" />
+                        </mat-card-content>
+                    </mat-card>
+
+                    <mat-card>
+                        <mat-card-title><h2>NRC</h2></mat-card-title>
+                        <mat-card-content>
+                            <div class="nrc-input-select-wrapper">
+                                <mat-form-field class="nrc_code">
+                                    <mat-select [(ngModel)]="nrc_code" (selectionChange)="chooseCode($event)">
+                                        <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" [value]="number">
+                                            {{number}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="nrc_region">
+                                    <mat-select [(ngModel)]="nrc_region" (selectionChange)="chooseRegion($event)">
+                                        <mat-option *ngFor="let region of nrcRegionList" value="{{region.name_en}}">
+                                            {{region.name_en}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <mat-form-field class="nrc_number">
+                                    <mat-label> NRC Number</mat-label>
+                                    <input matInput placeholder="Enter NRC Number" [(ngModel)]="nrc_number" maxlength="6" />
+                                </mat-form-field>
+                            </div>
+
+                            <mat-label>NRC Back Image</mat-label>
+                            <input type="file" #fileInput id="fileInput" name="uploadFile" accept="image/*" (change)="selectPassportBackImage($event)" />
+                            <mat-label>NRC Front Image</mat-label>
+                            <input type="file" #fileInput id="fileInput" name="uploadFile" accept="image/*" (change)="selectPassportFrontImage($event)" />
+
+
+                        </mat-card-content>
+                    </mat-card>
+
+                        <div>
+                            <mat-label>Is Company :</mat-label>
+                            <div class="form-control">
+                                <mat-radio-group aria-label="Select an option" [(ngModel)]="isCompany">
+                                    <mat-radio-button value="1" checked="checked">Yes</mat-radio-button>
+                                    <mat-radio-button value="0">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <mat-form-field>
+                                <mat-label>Company Name</mat-label>
+                                <input matInput placeholder="Enter Company id" disabled="{{isCompany === '1' ? false : true}}" [(ngModel)]="company_id">
+                            </mat-form-field>
+                        </div>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Sale Name </mat-label>
+                            <mat-select [(ngModel)]="sale_id" (selectionChange)="chooseSaleName($event)">
+                                <mat-option *ngFor="let salename of salenameList" value="{{salename.id}}">
+                                    {{salename.employee_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Sale Remark </mat-label>
+                            <input matInput placeholder="Enter Sale Remark" [(ngModel)]="sale_remark" />
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Channel Name </mat-label>
+                            <mat-select [(ngModel)]="channel_id" (selectionChange)="changeChannelName($event)">
+                                <mat-option *ngFor="let channelName of channelNameList" value="{{channelName.id}}">
+                                    {{channelName.channel_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Status Group Name </mat-label>
+                            <mat-select [(ngModel)]="status_id" (selectionChange)="changeStatusName($event)">
+                                <mat-option *ngFor="let statusName of statusNameList" value="{{statusName.id}}">
+                                    {{statusName.status_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Install Team Name </mat-label>
+                            <mat-select [(ngModel)]="install_team_id" (selectionChange)="changeInstallTeam($event)">
+                                <mat-option *ngFor="let installTeamName of installTeamNameList" value="{{installTeamName.id}}">
+                                    {{installTeamName.install_team_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Billing Zone Name </mat-label>
+                            <mat-select [(ngModel)]="billing_zone_id" (selectionChange)="changeBillngZone($event)">
+                                <mat-option *ngFor="let billingZone of billingZoneList" value="{{billingZone.id}}">
+                                    {{billingZone.billing_zone_name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label> Remark </mat-label>
+                            <input matInput placeholder="Enter Remark" [(ngModel)]="remark" />
+                        </mat-form-field>
+
+
+                </mat-card-content>
+                
+
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)=create()> Create </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+
+

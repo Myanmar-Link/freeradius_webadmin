@@ -104,6 +104,11 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./core/account/account.module').then(m => m.AccountModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'order-form',
+    loadChildren: () => import('./core/order-form/order-form.module').then(m => m.OrderFormModule),
+    canActivate: [AuthGuard]
   }
 ];
 

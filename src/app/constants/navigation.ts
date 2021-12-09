@@ -226,5 +226,19 @@ export const sideMenu = [
         url: '/account/list'
       }
     ]
+  },
+  {
+    title: 'Customer Order Form',
+    icon: 'feed',
+    children: [
+      {
+        title: 'Create',
+        url: '/order-form/create'
+      },
+      {
+        title: 'List',
+        url: '/order-form/list'
+      }
+    ]
   }
 ]

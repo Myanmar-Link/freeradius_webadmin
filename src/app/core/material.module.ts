@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
 
 const MaterialModules: any = [
   MatInputModule, 
@@ -37,7 +38,8 @@ const MaterialModules: any = [
   MatPaginatorModule,
   MatSortModule,
   MatSelectModule,
-  MatDatepickerModule
+  MatDatepickerModule,
+  MatRadioModule
 ];
 
 @NgModule({

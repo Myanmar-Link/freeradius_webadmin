@@ -17,7 +17,7 @@ const coreModules: any = [
 @NgModule({
   declarations: [
     AppComponent,
-    AccessDeniedComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
